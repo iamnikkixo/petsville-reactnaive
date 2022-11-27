@@ -63,7 +63,7 @@ const ProductDetailsScreen = ({ navigation, route }) => {
         <View style={{ marginLeft: 20, marginTop: 20, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#1EA124' }}>{product.brand}</Text>
           <View style={styles.priceTag}>
-            <Text style={{ marginLeft: 18, color: 'white', fontWeight: 'bold', fontSize: 16 }}>{product.price}</Text>
+            <Text style={{ marginLeft: 18, color: 'white', fontWeight: 'bold', fontSize: 16 }}>&#3647;{product.price}</Text>
           </View>
         </View>
         <View style={{ marginLeft: 20 }}>

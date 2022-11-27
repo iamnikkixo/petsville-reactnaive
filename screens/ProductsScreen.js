@@ -100,7 +100,7 @@ const ProductsScreen = ({ navigation }) => {
 
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 5 }}>
                             <Text style={styles.costText}>
-                                {product.price}
+                            &#3647;{product.price}
                             </Text>
                             <Pressable
                                 onPress={() => handleAddtoCart(product)}
