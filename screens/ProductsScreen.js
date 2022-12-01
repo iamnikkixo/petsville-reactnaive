@@ -13,16 +13,19 @@ import {
     Platform,
 } from 'react-native';
 import { Icon, Badge } from 'react-native-elements';
+import { Searchbar } from 'react-native-paper';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { allProducts } from '../features/products/productsSlice';
 import { addToCart, getTotal } from '../features/products/cartSlice';
-import * as Animatable from 'react-native-animatable'
+
 
 const WIDTH = Dimensions.get('window').width / 2 - 30;
 
 const ProductsScreen = ({ navigation }) => {
     const [categoryIndex, setCategoryIndex] = useState(0);
+    const [searchQuery, setSearchQuery] = useState('');
+    const onChangeSearch = query => setSearchQuery(query);
     const products = useSelector(allProducts);
     const { cartTotalQty } = useSelector(state => state.cart);
     const dispatch = useDispatch();
@@ -68,62 +71,62 @@ const ProductsScreen = ({ navigation }) => {
             <Pressable
                 onPress={() => navigation.navigate('ProductDetails', product)}
             >
-     
-                    <View style={styles.productCard}>
-                        <View style={{ alignItems: 'flex-end' }}>
+
+                <View style={styles.productCard}>
+                    <View style={{ alignItems: 'flex-end' }}>
+                        <View style={{
+                            width: 30,
+                            height: 30,
+                            borderRadius: 15,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: product.favourite ? '#FFCCCB' : '#BEBEBE'
+                        }}>
+                            <Icon
+                                name='heart'
+                                type='font-awesome'
+                                size={15}
+                                color={product.favourite ? 'red' : 'black'}
+                            />
+                        </View>
+
+                    </View>
+                    <View style={{ height: 100, alignItems: 'center' }}>
+                        <Image source={product.image} style={{ flex: 1, resizeMode: 'contain' }} />
+                    </View>
+                    <Text style={styles.brandText}>
+                        {product.brand}
+                    </Text>
+                    <Text>
+                        {product.itemName}
+                    </Text>
+
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 5 }}>
+                        <Text style={styles.costText}>
+                            &#3647;{product.price}
+                        </Text>
+                        <Pressable
+                            onPress={() => handleAddtoCart(product)}
+                        >
                             <View style={{
-                                width: 30,
-                                height: 30,
-                                borderRadius: 15,
-                                alignItems: 'center',
+                                height: 25,
+                                width: 25,
+                                backgroundColor: '#1EA124',
+                                borderRadius: 5,
                                 justifyContent: 'center',
-                                backgroundColor: product.favourite ? '#FFCCCB' : '#BEBEBE'
+                                alignItems: 'center',
                             }}>
                                 <Icon
-                                    name='heart'
+                                    name='plus'
                                     type='font-awesome'
-                                    size={15}
-                                    color={product.favourite ? 'red' : 'black'}
+                                    color='white'
+                                    size={12}
+
                                 />
                             </View>
-
-                        </View>
-                        <View style={{ height: 100, alignItems: 'center' }}>
-                            <Image source={product.image} style={{ flex: 1, resizeMode: 'contain' }} />
-                        </View>
-                        <Text style={styles.brandText}>
-                            {product.brand}
-                        </Text>
-                        <Text>
-                            {product.itemName}
-                        </Text>
-
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 5 }}>
-                            <Text style={styles.costText}>
-                            &#3647;{product.price}
-                            </Text>
-                            <Pressable
-                                onPress={() => handleAddtoCart(product)}
-                            >
-                                <View style={{
-                                    height: 25,
-                                    width: 25,
-                                    backgroundColor: '#1EA124',
-                                    borderRadius: 5,
-                                    justifyContent: 'center',
-                                    alignItems: 'center',
-                                }}>
-                                    <Icon
-                                        name='plus'
-                                        type='font-awesome'
-                                        color='white'
-                                        size={12}
-
-                                    />
-                                </View>
-                            </Pressable>
-                        </View>
+                        </Pressable>
                     </View>
+                </View>
             </Pressable>
         )
     };
@@ -153,8 +156,12 @@ const ProductsScreen = ({ navigation }) => {
             </View>
             <View style={{ marginTop: 30, flexDirection: 'row' }}>
                 <View style={styles.searchContainer}>
-                    <Icon name='magnify' type='material-community' size={30} style={{ marginHorizontal: 20 }} />
-                    <TextInput placeholder='Search' />
+                    <Searchbar
+                        placeholder="Search"
+                        onChangeText={onChangeSearch}
+                        value={searchQuery}
+                        style={styles.searchContainer}
+                    />
                 </View>
                 <View style={styles.sortBtn}>
                     <Icon
@@ -195,12 +202,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     searchContainer: {
-        height: 50,
         borderRadius: 10,
         backgroundColor: '#F5F5F5',
         flex: 1,
-        flexDirection: 'row',
-        alignItems: 'center',
+
     },
     sortBtn: {
         marginLeft: 10,
