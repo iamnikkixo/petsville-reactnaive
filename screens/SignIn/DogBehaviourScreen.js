@@ -7,7 +7,6 @@ import CustomButton from '../../components/CustomButton/CustomButton';
 import CustomCheckBox from '../../components/CustomCheckBox/CustomCheckBox';
 
 
-
 const DogBehaviourScreen = ({ navigation }) => {
     const [behaviours, setBehaviour] = useState(BEHAVIOUR);
     const [traits, setTraits] = useState(TRAITS);
@@ -26,7 +25,7 @@ const DogBehaviourScreen = ({ navigation }) => {
             <View>
                 {behaviours.map((behaviour, index) => {
                     return (
-                        <View style={{marginVertical: 8}}>
+                        <View style={{ marginVertical: 8 }}>
                             <CustomLabelInput key={index} label={`${index + 1}. ${behaviour.question}`} />
                         </View>
                     )

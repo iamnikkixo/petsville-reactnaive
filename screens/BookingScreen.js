@@ -3,7 +3,6 @@ import {
     View,
     ScrollView,
     StyleSheet,
-    Button,
     Alert,
     Pressable
 } from 'react-native';

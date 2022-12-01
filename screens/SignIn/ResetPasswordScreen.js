@@ -2,12 +2,10 @@ import { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
-import { useNavigation } from '@react-navigation/native';
 
-const ResetPasswordScreen = () => {
+const ResetPasswordScreen = ({ navigation }) => {
     const [code, setCode] = useState('');
     const [newPassword, setNewPassword] = useState('');
-    const navigation = useNavigation();
 
     const onSubmitPressed = () => {
         navigation.navigate('Home');

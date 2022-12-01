@@ -3,16 +3,15 @@ import CustomLabelInput from '../../components/CustomInput/CustomLabelInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import CustomCheckBox from '../../components/CustomCheckBox/CustomCheckBox';
 import { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
 
-const EmergencyInfoScreen = () => {
-  const [emergencyPickUp, setEmergencyPickUp ] = useState(false);
+
+const EmergencyInfoScreen = ({ navigation }) => {
+  const [emergencyPickUp, setEmergencyPickUp] = useState(false);
   const [eFirstName, setEFirstName] = useState('');
   const [eLastName, setELastName] = useState('');
   const [ePhoneNum, setEPhoneNum] = useState('');
   const [eEmail, setEEmail] = useState('');
 
-  const navigation = useNavigation();
 
   const onNextPressed = () => {
     navigation.navigate('VetInfo');

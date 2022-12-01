@@ -4,13 +4,11 @@ import logo from '../../assets/images/logoblack.png';
 import CustomSocialInput from '../../components/CustomInput/CustomSocialInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons/SocialSignInButtons';
-import { useNavigation } from '@react-navigation/native';
 
-const SignInScreen = () => {
+const SignInScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { height } = useWindowDimensions();
-    const navigation = useNavigation();
 
     const onSignInPress = () => {
         navigation.navigate('Home');

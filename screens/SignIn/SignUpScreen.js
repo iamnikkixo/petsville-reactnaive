@@ -3,13 +3,12 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import CustomSocialInput from '../../components/CustomInput/CustomSocialInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import SocialSignInButtons from '../../components/SocialSignInButtons/SocialSignInButtons';
-import { useNavigation } from '@react-navigation/native';
 
-const SignUpScreen = () => {
+
+const SignUpScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
-    const navigation = useNavigation();
 
     const onRegisterPressed = () => {
         navigation.navigate('OwnerInfo')
@@ -29,7 +28,7 @@ const SignUpScreen = () => {
 
 
     return (
-        <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor: 'white'}}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: 'white' }}>
             <View style={styles.root}>
                 <Text style={styles.title}>Create an account</Text>
                 <CustomSocialInput

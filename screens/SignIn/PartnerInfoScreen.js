@@ -1,20 +1,16 @@
 import { ScrollView, Text, StyleSheet, View } from 'react-native';
 import CustomLabelInput from '../../components/CustomInput/CustomLabelInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
-import CustomCheckBox from '../../components/CustomCheckBox/CustomCheckBox';
 import { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { Checkbox } from 'react-native-paper';
 
 
-const PartnerInfoScreen = () => {
+const PartnerInfoScreen = ({ navigation }) => {
   const [partnerPickUp, setPartnerPickUp] = useState(false);
   const [pFirstName, setPFirstName] = useState('');
   const [pLastName, setPLastName] = useState('');
   const [pPhoneNum, setPPhoneNum] = useState('');
   const [pEmail, setPEmail] = useState('');
-
-
-  const navigation = useNavigation();
 
   const onNextPressed = () => {
     navigation.navigate('EmergencyInfo');
@@ -28,11 +24,16 @@ const PartnerInfoScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Partner Information</Text>
-      <CustomCheckBox
-        label='Authorised Pick-Up?'
-        value={partnerPickUp}
-        setValue={() => setPartnerPickUp(!partnerPickUp)}
-      />
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <Checkbox
+          label='Authorised Pick-Up?'
+          status={partnerPickUp ? 'checked' : 'unchecked'}
+          onPress={() => {
+            setPartnerPickUp(!partnerPickUp);
+          }}
+        />
+        <Text>Authorised Pick-Up?</Text>
+      </View>
       <CustomLabelInput
         label='First Name'
         value={pFirstName}

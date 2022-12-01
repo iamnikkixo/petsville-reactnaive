@@ -2,9 +2,8 @@ import { ScrollView, Text, StyleSheet, View } from 'react-native';
 import CustomLabelInput from '../../components/CustomInput/CustomLabelInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
 import { useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
 
-const OwnerInfoScreen = () => {
+const OwnerInfoScreen = ({ navigation }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [address, setAddress] = useState('');
@@ -12,7 +11,6 @@ const OwnerInfoScreen = () => {
   const [country, setCountry] = useState('');
   const [phoneNum, setPhoneNum] = useState('');
 
-  const navigation = useNavigation();
 
   const onNextPressed = () => {
     navigation.navigate('PartnerInfo');

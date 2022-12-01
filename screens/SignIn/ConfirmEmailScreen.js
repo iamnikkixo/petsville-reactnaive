@@ -2,11 +2,9 @@ import { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import CustomInput from '../../components/CustomInput/CustomInput';
 import CustomButton from '../../components/CustomButton/CustomButton';
-import { useNavigation } from '@react-navigation/native';
 
-const ConfirmEmailScreen = () => {
+const ConfirmEmailScreen = ({ navigation }) => {
     const [code, setCode] = useState('');
-    const navigation = useNavigation();
 
     const onConfirmPressed = () => {
         navigation.navigate('Home');

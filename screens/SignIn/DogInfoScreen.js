@@ -4,7 +4,6 @@ import CustomButton from '../../components/CustomButton/CustomButton';
 import CustomAddButton from '../../components/CustomButton/CustomAddButton';
 import { useState } from 'react';
 
-import CustomCheckBox from '../../components/CustomCheckBox/CustomCheckBox';
 
 
 const DogInfoScreen = ({navigation}) => {
